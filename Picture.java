@@ -368,7 +368,21 @@ public class Picture
 
    ////////////////////// methods ///////////////////////////////////////
 
-   
+  public void upsideDown() {
+    Pixel[][] pic = this.getPixels2D();
+    //for loop from 0 to width-1 (i as control variable)
+    for(int i = 0; i < pic[0].length; i++) {
+      //for loop from 0 to length/2 (j as control variable)
+      for(int j = 0; j < pic.length/2; j++) {
+        //store the color (length-j-1, i) in temp
+        Color temp = pic[pic.length-j-1][i].getColor();
+        //set color of (length-j-1, i) to the color of (j, i)
+        pic[pic.length-j-1][i].setColor(pic[j][i].getColor());
+        //set color of (j, i) to the color in temp
+        pic[j][i].setColor(temp);
+      }
+    }
+  }
 
 
 } // this } is the end of class Picture, put all new methods before this
